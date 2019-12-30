@@ -46,7 +46,7 @@ public class OtherFragment extends BaseFragment {
             //有网
             Bundle arguments = getArguments();
             String title = arguments.getString("title");
-            o.setText(title );
+            o.setText(title);
         }else{
             //没有网
             linss.setVisibility(View.VISIBLE);

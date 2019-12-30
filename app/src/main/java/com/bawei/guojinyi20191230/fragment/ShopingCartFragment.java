@@ -13,6 +13,7 @@ import com.bawei.guojinyi20191230.adapter.GridAdapter;
 import com.bawei.guojinyi20191230.base.BaseFragment;
 import com.bawei.guojinyi20191230.bean.DataBean;
 import com.bawei.guojinyi20191230.bean.ShopGridDataBean;
+import com.bawei.guojinyi20191230.mvp.contract.ContractClass;
 import com.bawei.guojinyi20191230.mvp.presenter.DataPresenter;
 import com.bawei.guojinyi20191230.mvp.view.DataView;
 import com.google.gson.Gson;
@@ -26,7 +27,7 @@ import java.util.List;
  * @version 创建时间：2019/12/30 11:45
  * @Description: 用途：完成特定功能
  */
-public class ShopingCartFragment extends BaseFragment implements DataView {
+public class ShopingCartFragment extends BaseFragment implements ContractClass.ConractView {
 
     private TextView t;
     private GridView grid_view;
@@ -63,16 +64,17 @@ public class ShopingCartFragment extends BaseFragment implements DataView {
 
         //mvp模式 获取数据
         DataPresenter dataPresenter = new DataPresenter();
-        dataPresenter.attachView(this);
+
         String path = "http://blog.zhaoliang5156.cn/api/mall/mall.json";
-        dataPresenter.getData(path);
+        dataPresenter.attachView(path,this);
     }
 
+
     @Override
-    public void success(String json) {
-       //解析
+    public void viewPresenter(String josn) {
+        //解析
         Gson gson = new Gson();
-        DataBean dataBean = gson.fromJson(json, DataBean.class);
+        DataBean dataBean = gson.fromJson(josn, DataBean.class);
         List<ShopGridDataBean> shopGridData = dataBean.getShopGridData();
         //设置适配器
         GridAdapter gridAdapter = new GridAdapter(shopGridData);
@@ -80,7 +82,7 @@ public class ShopingCartFragment extends BaseFragment implements DataView {
     }
 
     @Override
-    public void failed(String fai) {
-        Toast.makeText(getContext(), ""+fai, Toast.LENGTH_SHORT).show();
+    public void viewFailed(String failed) {
+
     }
 }

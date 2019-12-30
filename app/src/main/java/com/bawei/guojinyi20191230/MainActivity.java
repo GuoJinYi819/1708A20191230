@@ -58,7 +58,6 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onPageScrollStateChanged(int i) {
-
             }
         });
     }
@@ -88,6 +87,5 @@ public class MainActivity extends BaseActivity {
         //设置适配器
         MyAdapter myAdapter = new MyAdapter(getSupportFragmentManager());
         vp.setAdapter(myAdapter);
-
     }
 }
