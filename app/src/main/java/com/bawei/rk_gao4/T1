@@ -1,0 +1,15 @@
+简述自定义View的4个构造方法的作用与调用时机
+    1   public MyrecyView(Context context)   传递的是上下文  当前继承的View或ViewGroup 的当前对象
+       public MyrecyView(Context context, @Nullable AttributeSet attrs)  上下文  或属性集  上下文：当前对象  属性集：自定义属性会存到这个集合里
+         public MyrecyView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {  上下文  或属性集  上下文：当前对象  属性集：自定义属性会存到这个集合里  样式集 存储的当前View的样式表示
+         public MyrecyView(Context context, @Nullable AttributeSet attrs, int defStyleAttr，int defStyleRepin  上下文  或属性集  上下文：当前对象  属性集：自定义属性会存到这个集合里  样式集 存储的当前View的样式表示
+
+      调用时机  在定义自定义View时 定义一个方法 在前三个构造方法里调用 用以完成效果逻辑
+
+简述自定义属性的步骤，在Android Studio中新建txt写即可
+    2   第一步 在values 文件下 创建 attrs 文件
+            在文件里 添加 dection_styleable 标签 注意事项：标签声明的name属性 不能与系统提供的相同 否则编译失败
+           第二部 在代码中  通过属性集 把响应的属性 get出来  给view的属性赋初值
+           第三部 在相应的XML布局文件中使用自定义属性  注意命名空间
+
+

@@ -4,23 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-        <android.support.v4.view.ViewPager
-            android:id="@+id/vp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </android.support.v4.view.ViewPager>
-        <android.support.design.widget.TabLayout
-            android:layout_alignParentBottom="true"
-            android:id="@+id/tl"
-            app:tabMode="fixed"
-            app:tabGravity="fill"
-            app:tabTextColor="#000"
-            app:tabSelectedTextColor="@color/colorAccent"
+    tools:context=".MainActivity"
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <android.support.v4.view.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="1200dp"
+                android:id="@+id/vphome"
+                android:layout_weight="8">
 
-        </android.support.design.widget.TabLayout>
-
+            </android.support.v4.view.ViewPager>
+        </LinearLayout>
+    </ScrollView>
+    <android.support.design.widget.TabLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tabhome"
+        android:layout_weight="2"
+        app:tabTextColor="#020202"
+        app:tabSelectedTextColor="#FA0202"
+        app:tabMode="fixed" />
+    <!--热销新品-->
+    <RelativeLayout
+        android:id="@+id/relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></RelativeLayout>
+    <!--魔力时尚-->
+    <RelativeLayout
+        android:id="@+id/relative_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></RelativeLayout>
+    <!--品质生活-->
+    <RelativeLayout
+        android:id="@+id/relative_layout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></RelativeLayout>
 </RelativeLayout>
