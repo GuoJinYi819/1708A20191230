@@ -1,0 +1,5 @@
+简述Android中动画实现方式与区别
+两种实现方法  ObjectAnimator  ValueAnimator
+    ObjectAnimator  可以设置动画的先后顺序    ValueAnimator 不行
+    ObjectAnimator  易于上手    ValueAnimator 难
+    ObjectAnimator 是继承与ValueAnimator的  继承了它的所有的方法和属性 同时也加强了功能

@@ -1,4 +1,6 @@
 package com.bawei.rk_gao4;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.net.Uri;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +22,7 @@ import com.bawei.rk_gao4.mvp.Presenter.HomePresenter;
 import com.bawei.rk_gao4.mvp.mvpview.Homemvpview;
 import com.bawei.rk_gao4.net.NetUtil;
 import com.bawei.rk_gao4.view.MySoView;
+import com.bawei.rk_gao4.view.MyTranView;
 import com.google.gson.Gson;
 
 import java.net.URL;
@@ -38,6 +41,21 @@ public class MainActivity extends BaseActivity<HomePresenter> implements Homemvp
 
         vphome = findViewById(R.id.vphome);
         tabhome =  findViewById(R.id.tabhome);
+        final MyTranView mytranview = findViewById(R.id.mytranview);
+        //设置点击事件
+        mytranview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //2、点击方块，让方块斜着下落（20分）
+                //3、使用属性动画完成方块的下落（20分）
+                ObjectAnimator translationX = ObjectAnimator.ofFloat(mytranview, "TranslationX", 0, 620);
+                ObjectAnimator TranslationY = ObjectAnimator.ofFloat(mytranview, "TranslationY", 0, 1080);
+                AnimatorSet set = new AnimatorSet();
+                set.setDuration(2000);
+                set.play(translationX).with(TranslationY);
+                set.start();
+            }
+        });
         rl = findViewById(R.id.rl);
         MySoView so = findViewById(R.id.so);
         so.setOnTextListener(new MySoView.OnTextListener() {
